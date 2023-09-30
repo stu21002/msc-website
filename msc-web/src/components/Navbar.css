@@ -1,0 +1,31 @@
+.navbar {
+    display: flex;
+    justify-content: space-between; /* Distribute items across the screen */
+    padding: 10px;
+    background-color: #f0f0f0;
+  }
+  
+  .navbar-list {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .navbar-list li {
+    margin-right: 10px; /* Add spacing between list items */
+  }
+  
+  .navbar-list li:last-child {
+    margin-right: 0; /* Remove margin for the last list item */
+  }
+  
+  .navbar-list li a {
+    text-decoration: none;
+    color: #000;
+  }
+  
+  .navbar-list li a:hover {
+    color: #007BFF; /* Change color on hover */
+  }
+  
