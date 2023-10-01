@@ -1,38 +1,31 @@
-.App {
-  text-align: center;
+/* App.css */
+
+.branding-region {
+  position: relative;
+  width: calc(100% - 40px);
+  padding: 20px;
+  max-width: 100%;
+  overflow: hidden;
+  height: 100px; /* Set the height to show only the first 100px of the image */
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.logo {
+  position: absolute;
+  max-height: 100px;
+  width: auto;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.branding-region::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('./assets/BrandingRegionBackground.jpg'); 
+  background-size: cover; /* Adjust background size to cover the container */
+  background-position: top; /* Set the background position to the top */
+  background-repeat: no-repeat; /* Prevent background image from repeating */
 }

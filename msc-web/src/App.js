@@ -1,11 +1,21 @@
+import React from 'react';
 import './App.css';
+import logo from './assets/logo_trans.png';
+// import background from './assets/hh-freshers - 47.jpg'
 import Navbar from './components/Navbar';
 
-function App() {
+const App = () => {
   return (
-   <div>
-    <Navbar/>
-   </div>
+    <div>
+      <div>
+        <div className='branding-region'>
+          <img className="logo" src={logo} alt='Mountain and Ski Club Logo'/>
+        </div>
+        <div>    
+          <Navbar/>
+        </div>
+      </div>
+    </div>
   );
 }
 
