@@ -12,7 +12,7 @@ const App = () => {
           <img className="logo" src={logo} alt='Mountain and Ski Club Logo'/>
         </div>
         <div>    
-          <Navbar/>
+          <Navbar location={window.location}/>
         </div>
       </div>
     </div>

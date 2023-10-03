@@ -1,5 +1,3 @@
-// src/components/NavBar.js
-
 import React, { useState } from 'react';
 import { NavLink, BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Home from '../pages/Home';
@@ -7,36 +5,93 @@ import About from '../pages/About';
 import './Navbar.css';
 
 const Navbar = () => {
-  const [isActivitiesMenuOpen, setActivitiesMenuOpen] = useState(false);
+  const [activeMenu, setActiveMenu] = useState("home");
 
-  const toggleDropdown = () => {
-    setActivitiesMenuOpen(!isActivitiesMenuOpen);
+  const handleMenuClick = (menu) => {
+    setActiveMenu(menu);
   };
 
   return (
     <Router>
       <nav className="navbar">
         <ul className="navbar-list">
-          <li><NavLink to="/" activeClassName="active-link">Home</NavLink></li>
-          <li><NavLink to="/About" activeClassName="active-link">About</NavLink></li>
-          <li
-            className={isActivitiesMenuOpen ? 'active-dropdown' : ''}
-            onClick={toggleDropdown}
-          >
-            Activities
-            {isActivitiesMenuOpen && (
-              <ul className="dropdown">
-                <li><NavLink to="/News">News Option 1</NavLink></li>
-                <li><NavLink to="/News">News Option 2</NavLink></li>
-                {/* Add more options as needed */}
-              </ul>
-            )}
+          <li>
+            <NavLink
+              style={activeMenu === "home" ? { color: "blue" } : { color: "black" }}
+              onClick={() => handleMenuClick("home")}
+              to="/"
+              className="bar-item"
+            >
+              Home
+            </NavLink>
           </li>
-          <li><NavLink to="/News" activeClassName="active-link">News</NavLink></li>
-          <li><NavLink to="/Contact" activeClassName="active-link">Contact</NavLink></li>
-          <li><NavLink to="/FAQ" activeClassName="active-link">FAQ</NavLink></li>
+          <li>
+            <NavLink
+              style={activeMenu === "about" ? { color: "blue" } : { color: "black" }}
+              onClick={() => handleMenuClick("about")}
+              to="/About"
+              className="bar-item"
+            >
+              About
+            </NavLink>
+          </li>
+          <li className={activeMenu === "activities" ? 'active-dropdown' : ''}>
+            {/* <div onClick={() => handleMenuClick("activities")}> */}
+              Activities
+              {activeMenu === "activities" && (
+                <ul className="dropdown">
+                  <li>
+                    <NavLink onClick={() => handleMenuClick("hiking")} to="/Hiking">
+                      Hiking
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink onClick={() => handleMenuClick("climbing")} to="/Climbing">
+                      Climbing
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink onClick={() => handleMenuClick("running")} to="/Running">
+                      Running
+                    </NavLink>
+                  </li>
+                </ul>
+              )}
+            {/* </div> */}
+          </li>
+          <li>
+            <NavLink
+              style={activeMenu === "news" ? { color: "blue" } : { color: "black" }}
+              onClick={() => handleMenuClick("news")}
+              to="/News"
+              className="bar-item"
+            >
+              News
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              style={activeMenu === "contact" ? { color: "blue" } : { color: "black" }}
+              onClick={() => handleMenuClick("contact")}
+              to="/Contact"
+              className="bar-item"
+            >
+              Contact
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              style={activeMenu === "faq" ? { color: "blue" } : { color: "black" }}
+              onClick={() => handleMenuClick("faq")}
+              to="/FAQ"
+              className="bar-item"
+            >
+              FAQ
+            </NavLink>
+          </li>
         </ul>
       </nav>
+
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/About" element={<About />} />
@@ -44,6 +99,6 @@ const Navbar = () => {
       </Routes>
     </Router>
   );
-}
+};
 
 export default Navbar;
