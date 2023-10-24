@@ -1,8 +1,10 @@
 import React from 'react';
 import './App.css';
 import logo from './assets/logo_trans.png';
-// import background from './assets/hh-freshers - 47.jpg'
 import Navbar from './components/Navbar';
+import Home from './pages/Home';
+import About from './pages/About';
+import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 
 const App = () => {
   return (
@@ -11,9 +13,13 @@ const App = () => {
         <div className='branding-region'>
           <img className="logo" src={logo} alt='Mountain and Ski Club Logo'/>
         </div>
-        <div>    
-          <Navbar location={window.location}/>
-        </div>
+        <Router>
+            <Navbar />
+            <Routes>
+                {/* <Route path="/" element={<Home />} /> */}
+                <Route path="/about" element={<About />} />
+            </Routes>
+        </Router>
       </div>
     </div>
   );
